@@ -1,6 +1,6 @@
 [submodule "src/github.com/concourse/atc"]
 	path = src/github.com/concourse/atc
-	url = https://github.com/concourse/atc
+	url = https://github.com/alphagov/paas-atc
 	branch = master
 [submodule "src/github.com/lib/pq"]
 	path = src/github.com/lib/pq
