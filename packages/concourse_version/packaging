@@ -2,6 +2,9 @@ set -e -u -x
 
 VERSION_FILE="$PWD/version/VERSION"
 
+# We will override the version here as our fork is only temporary and it isn't worth to create a custom pipeline for it.
+echo "4.2.2-gds-1" > "$VERSION_FILE"
+
 {
   if [ -e "$VERSION_FILE" ]; then
     cat "$VERSION_FILE"
