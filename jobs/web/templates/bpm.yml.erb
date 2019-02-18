@@ -12,6 +12,8 @@ processes:
     open_files: 65536
 
   env:
+    CONCOURSE_METRICS_ATTRIBUTE: <%= "bosh-deployment:#{spec.deployment},bosh-job:#{name}".to_json %>
+
 <%
   if_link("web") do |l|
     web_urls = []
@@ -256,6 +258,10 @@ processes:
 
 <% if_p("default_task_memory_limit") do |v| -%>
     CONCOURSE_DEFAULT_TASK_MEMORY_LIMIT: <%= env_flag(v).to_json %>
+<% end -%>
+
+<% if_p("enable_global_resources") do |v| -%>
+    CONCOURSE_ENABLE_GLOBAL_RESOURCES: <%= env_flag(v).to_json %>
 <% end -%>
 
 <% if_p("encryption_key") do |v| -%>
@@ -660,6 +666,10 @@ processes:
 
 <% if_p("vault.cache") do |v| -%>
     CONCOURSE_VAULT_CACHE: <%= env_flag(v).to_json %>
+<% end -%>
+
+<% if_p("vault.max_lease") do |v| -%>
+    CONCOURSE_VAULT_MAX_LEASE: <%= env_flag(v).to_json %>
 <% end -%>
 
 <% if_p("vault.path_prefix") do |v| -%>
